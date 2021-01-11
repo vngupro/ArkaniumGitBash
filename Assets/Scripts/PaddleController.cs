@@ -5,8 +5,8 @@ using UnityEngine;
 public class PaddleController : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;                //speed factor
-    [SerializeField] private bool player1 = false;              //player 1
-    [SerializeField] private bool player2 = false;              //player 2
+    public static bool player1 = true;                          //player 1
+    public static bool player2 = false;                         //player 2
     [SerializeField] private float xOffset = 1.0f;              //distance between players
 
     private GameStatus theGameSession;                          //game status

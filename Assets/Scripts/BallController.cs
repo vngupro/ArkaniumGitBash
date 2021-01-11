@@ -56,6 +56,18 @@ public class BallController : MonoBehaviour
         {
             AudioClip clip = ballSound[UnityEngine.Random.Range(0, ballSound.Length)];
             ballAudioSource.PlayOneShot(clip);
+
+            //switch player
+            if(other.gameObject==player1 && PaddleController.player1)
+            {
+                PaddleController.player1 = false;
+                PaddleController.player2 = true;
+            }
+            else if(other.gameObject == player1 && PaddleController.player2)
+            {
+                PaddleController.player1 = true;
+                PaddleController.player2 = false;
+            }
         }
     }
 }

@@ -697,6 +697,11 @@ PrefabInstance:
       propertyPath: player1
       value: 
       objectReference: {fileID: 1164094836}
+    - target: {fileID: 4515935120982559634, guid: e8cc8910f02bc0b46aab114b0f0c0d9a,
+        type: 3}
+      propertyPath: ballSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4515935120982559657, guid: e8cc8910f02bc0b46aab114b0f0c0d9a,
         type: 3}
       propertyPath: m_Name
@@ -962,7 +967,7 @@ MonoBehaviour:
   gameSpeed: 1
   scoreText: {fileID: 1365014885}
   currentScore: 0
-  isAutoPlayOn: 0
+  isAutoPlayOn: 1
 --- !u!1 &1365014884
 GameObject:
   m_ObjectHideFlags: 0

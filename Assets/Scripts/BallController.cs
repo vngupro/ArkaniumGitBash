@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
-    [SerializeField] GameObject player1;                //player1 ref
-    [SerializeField] float xPush = 2f;                  //x direction
-    [SerializeField] float yPush = 15f;                 //y direction
+    [SerializeField] PaddleController player1;          //player ref
+    [SerializeField] float ballSpeed = 1.0f;            //speed
+    [SerializeField] float xPush = 2f;                  //x velocity
+    [SerializeField] float yPush = 15f;                 //y velocity
     [SerializeField] AudioClip[] ballSound;             //sound
 
     float yOffset;                                      //offset on paddle before launch
@@ -14,17 +15,23 @@ public class BallController : MonoBehaviour
     Rigidbody2D ballRigidBody;                          //ball rigidbody ref
     AudioSource ballAudioSource;                        //ball audiosource ref
 
+    [Header("DEBUG")]
+    [SerializeField] float rbvelocityX;
+
+
     // Start is called before the first frame update
     void Start()
     {
         ballRigidBody = GetComponent<Rigidbody2D>();
         ballAudioSource = GetComponent<AudioSource>();
         yOffset = player1.GetComponent<BoxCollider2D>().size.y;
+        rbvelocityX = ballRigidBody.velocity.x;
     }
 
     // Update is called once per frame
     void Update()
     {
+        rbvelocityX = ballRigidBody.velocity.x;
         if (!hasStarted)
         {
             LockBallToPaddle();
@@ -37,7 +44,7 @@ public class BallController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ballRigidBody.velocity = new Vector2(xPush, yPush);
+            ballRigidBody.velocity = new Vector2(xPush, yPush) * ballSpeed;
             hasStarted = true;
         }
     }
@@ -57,16 +64,14 @@ public class BallController : MonoBehaviour
             AudioClip clip = ballSound[UnityEngine.Random.Range(0, ballSound.Length)];
             ballAudioSource.PlayOneShot(clip);
 
-            //switch player
-            if(other.gameObject==player1 && PaddleController.player1)
+            if (Mathf.Abs(ballRigidBody.velocity.x) <= 0.1f)
             {
-                PaddleController.player1 = false;
-                PaddleController.player2 = true;
+                ballRigidBody.velocity = new Vector2(xPush, ballRigidBody.velocity.y);
             }
-            else if(other.gameObject == player1 && PaddleController.player2)
+
+            if (Mathf.Abs(ballRigidBody.velocity.y) <= 1.0f)
             {
-                PaddleController.player1 = true;
-                PaddleController.player2 = false;
+                ballRigidBody.velocity = new Vector2(ballRigidBody.velocity.x, yPush);
             }
         }
     }

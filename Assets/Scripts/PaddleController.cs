@@ -5,8 +5,8 @@ using UnityEngine;
 public class PaddleController : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;                //speed factor
-    public static bool player1 = true;                          //player 1
-    public static bool player2 = false;                         //player 2
+    [SerializeField] private bool player1 = false;                          //player 1
+    [SerializeField] private bool player2 = false;                         //player 2
     [SerializeField] private float xOffset = 1.0f;              //distance between players
 
     private GameStatus theGameSession;                          //game status
@@ -22,7 +22,12 @@ public class PaddleController : MonoBehaviour
     private float camWidth;                                     //camera view width
     private float playerHeight;                                 //player height
     private float playerWidth;                                  //player width
+    private bool autoPlay = false;
 
+    private void Awake()
+    {
+        GameEvent.autoPlay.AddListener(ActivateAutoPlay);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -63,5 +68,16 @@ public class PaddleController : MonoBehaviour
         {
             transform.position = new Vector2(currentPos.x - 0.1f * speed, currentPos.y);
         }
+
+        if (autoPlay)
+        {
+            transform.position = new Vector3(theBall.transform.position.x, transform.position.y, transform.position.z);
+        }
+            
+    }
+
+    private void ActivateAutoPlay()
+    {
+        autoPlay = true;
     }
 }

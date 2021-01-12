@@ -32,6 +32,10 @@ public class GameStatus : MonoBehaviour
     void Start()
     {
         scoreText.text = currentScore.ToString();
+        if (isAutoPlayOn)
+        {
+            GameEvent.autoPlay.Invoke();
+        }
     }
 
     // Update is called once per frame

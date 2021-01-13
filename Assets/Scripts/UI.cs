@@ -10,7 +10,7 @@ class UI : MonoBehaviour
     // | Layers
     GameObject Layer_Runtime, Layer_Pause, Layer_Menu, Layer_Settings;
     // | Buttons
-    Button Button_Resume, Button_Retry, Button_Play, Button_Menu, Button_Quit_P, Button_Quit_M, Button_Settings;
+    Button Button_Resume, Button_Retry, Button_Play, Button_Menu, Button_Quit_P, Button_Quit_M, Button_Settings_P, Button_Settings_M;
     void Awake()
     {
         // UI Objects
@@ -26,7 +26,8 @@ class UI : MonoBehaviour
         Button_Menu = GameObject.Find("Button_Menu").GetComponent<Button>();
         Button_Quit_P = GameObject.Find("Button_Quit_P").GetComponent<Button>();
         Button_Quit_M = GameObject.Find("Button_Quit_M").GetComponent<Button>();
-        Button_Settings = GameObject.Find("Button_Settings").GetComponent<Button>();
+        Button_Settings_P = GameObject.Find("Button_Settings_P").GetComponent<Button>();
+        Button_Settings_M = GameObject.Find("Button_Settings_M").GetComponent<Button>();
         // | Listeners
         Button_Resume.onClick.AddListener(SwitchIsPaused);
         Button_Retry.onClick.AddListener(Play);
@@ -34,13 +35,15 @@ class UI : MonoBehaviour
         Button_Menu.onClick.AddListener(Menu);
         Button_Quit_P.onClick.AddListener(Application.Quit);
         Button_Quit_M.onClick.AddListener(Application.Quit);
-        Button_Settings.onClick.AddListener(SwitchIsSettinged);
+        Button_Settings_P.onClick.AddListener(SwitchIsSettinged);
+        Button_Settings_M.onClick.AddListener(SwitchIsSettinged);
     }
     void Update()
     {
         // Game State
         Time.timeScale = isPaused ? 0 : isMenued ? 0 : 1;
-        if (!isMenued && Input.GetKeyDown(KeyCode.Escape)) SwitchIsPaused();
+        if (!isMenued && !isSettinged && Input.GetKeyDown(KeyCode.Escape)) SwitchIsPaused();
+        if (isSettinged && Input.GetKeyDown(KeyCode.Escape)) SwitchIsSettinged();
         // UI Objects
         // | Layers
         Layer_Runtime.SetActive(!isPaused && !isMenued && !isSettinged);
@@ -48,7 +51,7 @@ class UI : MonoBehaviour
         Layer_Menu.SetActive(isMenued && !isSettinged);
         Layer_Settings.SetActive(isSettinged);
     }
-    void SwitchIsPaused() { isPaused ^= true; isSettinged = false; }
+    void SwitchIsPaused() { isPaused ^= true; }
     void Play() { SceneManager.LoadScene("Game"); }
     void Menu() { SceneManager.LoadScene("Menu"); }
     void SwitchIsSettinged() { isSettinged ^= true; }

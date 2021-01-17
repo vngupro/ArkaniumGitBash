@@ -11,6 +11,7 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         GameEvent.blockCreate.AddListener(CountBreakableBlocks);
+        GameEvent.blockDestroy.AddListener(BlockDestroyed);
     }
     // CountBreakeableBlocks : Count blocks, each block run this function once
     public void CountBreakableBlocks()
@@ -32,6 +33,6 @@ public class LevelManager : MonoBehaviour
     public void LoadNextScene()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex + 1);
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }

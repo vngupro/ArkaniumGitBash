@@ -12,8 +12,8 @@ public class PaddleController : MonoBehaviour
     private BallController theBall;                             //ball ref
     private Vector2 currentPos;                                 //current position of paddle
 
-    private KeyCode inputPlayerR;                               //Keyboard control right
-    private KeyCode inputPlayerL;                               //Keyboard control left
+    private KeyCode inputPlayerR;                               //keyboard control for right
+    private KeyCode inputPlayerL;                               //Keyboard control for left
     
     private float xMin;                                         //paddle limit on left (passing by collider is not that good, shake effect on constant collision)
     private float xMax;                                         //paddle limit on right
@@ -46,19 +46,16 @@ public class PaddleController : MonoBehaviour
                 inputPlayerL = KeyCode.A;
                 inputPlayerR = KeyCode.D;
                 transform.position = new Vector3(-(playerWidth + xOffset),(-camHeight + playerHeight) / 2, 0);
-                Debug.Log("Okay Player 1");
                 break; 
             case 2:
                 inputPlayerR = KeyCode.RightArrow;
                 inputPlayerL = KeyCode.LeftArrow;
                 transform.position = new Vector3(playerWidth + xOffset, (-camHeight + playerHeight) /2, 0);
-                Debug.Log("Okay Player 2");
                 break;
             default:
                 inputPlayerL = KeyCode.A;
                 inputPlayerR = KeyCode.D;
                 transform.position = new Vector3(-(playerWidth + xOffset), (-camHeight + playerHeight) / 2, 0);
-                Debug.Log("Okay Default");
                 break;
         }
     }
@@ -81,7 +78,6 @@ public class PaddleController : MonoBehaviour
         {
             transform.position = new Vector3(theBall.transform.position.x, transform.position.y, transform.position.z);
         }
-            
     }
 
     private void ActivateAutoPlay()

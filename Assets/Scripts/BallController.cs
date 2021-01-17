@@ -10,7 +10,7 @@ public class BallController : MonoBehaviour
     [SerializeField] float yPush = 15f;                 //y velocity
     [SerializeField] AudioClip[] ballSound;             //sound
 
-    float yOffset;                                      //offset on paddle before launch
+    [SerializeField] private float yOffset;                                      //offset on paddle before launch
     bool hasStarted = false;                            //if has launch
     Rigidbody2D ballRigidBody;                          //ball rigidbody ref
     AudioSource ballAudioSource;                        //ball audiosource ref
@@ -52,7 +52,7 @@ public class BallController : MonoBehaviour
     // LockBallToPaddle : Lock to paddle at start of game until lauch
     private void LockBallToPaddle()
     {
-        Vector2 paddlePos = new Vector2(player1.transform.position.x, player1.transform.position.y + yOffset);
+        Vector2 paddlePos = new Vector2(player1.transform.position.x, player1.transform.position.y + yOffset * player1.transform.localScale.y);
         transform.position = paddlePos;
     }
 

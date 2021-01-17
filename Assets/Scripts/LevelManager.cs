@@ -25,7 +25,8 @@ public class LevelManager : MonoBehaviour
         breakableBlocks--;
         if (breakableBlocks <= 0)
         {
-            LoadNextScene();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //LoadNextScene();
         }
     }
 

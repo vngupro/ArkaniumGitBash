@@ -15,7 +15,7 @@ MonoBehaviour:
   numberOfLines: 4
   numberOfBricksPerLines: 17
   brickPrefabsList:
-  - {fileID: 5139941995101233969, guid: 7d8da5318e022df49833c4a626c942c5, type: 3}
-  - {fileID: 5139941995101233969, guid: bc1182c4b123f1b48ae42559e5b5ac61, type: 3}
-  - {fileID: 5139941995101233969, guid: 1f3d022d47c9097458b8dd0ed90f9ed1, type: 3}
-  - {fileID: 5139941995101233969, guid: c81f818385be6844c981f512ea992d4d, type: 3}
+  - {fileID: 5259539257053100097, guid: ecd96fc96b3b73341b663e5cfca668d8, type: 3}
+  - {fileID: 5259539257053100097, guid: 08c8ca8c161490542af8b3ac907de569, type: 3}
+  - {fileID: 5259539257053100097, guid: 95d7dda8a15a2a445a9831f043169757, type: 3}
+  - {fileID: 5259539257053100097, guid: df44385e514980b41b7c44ea7133d1e8, type: 3}

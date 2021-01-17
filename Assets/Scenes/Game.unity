@@ -425,25 +425,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 379027897, guid: 01946730de4ed8649ad94d2530614e98, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 417.15778
+      objectReference: {fileID: 0}
+    - target: {fileID: 379027897, guid: 01946730de4ed8649ad94d2530614e98, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -208.42984
+      objectReference: {fileID: 0}
+    - target: {fileID: 379027898, guid: 01946730de4ed8649ad94d2530614e98, type: 3}
+      propertyPath: m_text
+      value: 'Space : Launch Ball | P1 : A & D | P2 : Left Arrow & Right Arrow'
+      objectReference: {fileID: 0}
     - target: {fileID: 7205224463590582120, guid: 01946730de4ed8649ad94d2530614e98,
         type: 3}
       propertyPath: m_Name
       value: GameStatus
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205224463590582120, guid: 01946730de4ed8649ad94d2530614e98,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205224463590582121, guid: 01946730de4ed8649ad94d2530614e98,
-        type: 3}
-      propertyPath: gameSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7205224463590582121, guid: 01946730de4ed8649ad94d2530614e98,
-        type: 3}
-      propertyPath: isAutoPlayOn
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7205224463590582122, guid: 01946730de4ed8649ad94d2530614e98,
         type: 3}
@@ -499,6 +496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7205224463840826861, guid: 01946730de4ed8649ad94d2530614e98,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01946730de4ed8649ad94d2530614e98, type: 3}

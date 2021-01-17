@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class LevelCreator : MonoBehaviour
 {
-    [SerializeField] Level level;
+    //[SerializeField] Level level;
+    [SerializeField] List<GameObject> brickPrefabsList = new List<GameObject>();
     private float camHeight;                                    //camera view height
     private float camWidth;                                     //camera view width
     private float brickHeight;
@@ -15,8 +16,8 @@ public class LevelCreator : MonoBehaviour
     {
         camHeight = 2 * Camera.main.orthographicSize;
         camWidth = camHeight * Camera.main.aspect;
-        brickHeight = level.brickPrefabsList[0].GetComponent<BoxCollider2D>().size.y;
-        brickWidth = level.brickPrefabsList[0].GetComponent<BoxCollider2D>().size.x;
+        brickHeight = brickPrefabsList[0].GetComponent<BoxCollider2D>().size.y;
+        brickWidth = brickPrefabsList[0].GetComponent<BoxCollider2D>().size.x;
 
         numberOfLines = Random.Range(1, 15);
         //numebrOfBricksPerLine = Random.Range(10, 17);
@@ -25,8 +26,8 @@ public class LevelCreator : MonoBehaviour
         {
             for (int j = 1; j <= numberOfBricksPerLine; j++)
             {
-                int index = Random.Range(0, level.brickPrefabsList.Count);
-                Instantiate(level.brickPrefabsList[index], new Vector3(-camWidth / 2 + brickWidth * j, (camHeight - brickHeight) / 2 - brickHeight * i, 0), transform.rotation);
+                int index = Random.Range(0, brickPrefabsList.Count);
+                Instantiate(brickPrefabsList[index], new Vector3(-camWidth / 2 + brickWidth * j, (camHeight - brickHeight) / 2 - brickHeight * i, 0), transform.rotation);
             }
         }
         //for (int i = 1; i <= level.numberOfLines; i++)

@@ -1,8 +1,11 @@
 .vscode/
 .vs/
 
-Build/
-Library/
-Logs/
-Temp/
-UserSettings/
+[Bb]uild/
+[Ll]ibrary/
+[Ll]ogs/
+[Oo]bj/
+[Tt]emp/
+[Uu]ser[Ss]ettings/
+
+*.meta

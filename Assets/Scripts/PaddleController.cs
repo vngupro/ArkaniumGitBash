@@ -5,16 +5,15 @@ using UnityEngine;
 public class PaddleController : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;                //speed factor
-    [SerializeField] private bool player1 = false;                          //player 1
-    [SerializeField] private bool player2 = false;                         //player 2
+    [SerializeField] private int playerNumber = 1;              //player number
     [SerializeField] private float xOffset = 1.0f;              //distance between players
 
     private GameStatus theGameSession;                          //game status
     private BallController theBall;                             //ball ref
     private Vector2 currentPos;                                 //current position of paddle
 
-    private KeyCode inputPlayerR;                               //Keyboard control right
-    private KeyCode inputPlayerL;                               //Keyboard control left
+    private KeyCode inputPlayerR;                               //keyboard control for right
+    private KeyCode inputPlayerL;                               //Keyboard control for left
     
     private float xMin;                                         //paddle limit on left (passing by collider is not that good, shake effect on constant collision)
     private float xMax;                                         //paddle limit on right
@@ -41,17 +40,23 @@ public class PaddleController : MonoBehaviour
         xMax = camWidth / 2;
         xMin = -xMax;
 
-        if (player1)
+        switch (playerNumber)
         {
-            inputPlayerL = KeyCode.A;
-            inputPlayerR = KeyCode.D;
-            transform.position = new Vector3(-(playerWidth + xOffset), -camHeight/2 + playerHeight, 0);
-        }
-        else if (player2)
-        {
-            inputPlayerR = KeyCode.RightArrow;
-            inputPlayerL = KeyCode.LeftArrow;
-            transform.position = new Vector3(playerWidth + xOffset, -camHeight/2 + playerHeight, 0);
+            case 1:
+                inputPlayerL = KeyCode.A;
+                inputPlayerR = KeyCode.D;
+                transform.position = new Vector3(-(playerWidth + xOffset),(-camHeight + playerHeight) / 2, 0);
+                break; 
+            case 2:
+                inputPlayerR = KeyCode.RightArrow;
+                inputPlayerL = KeyCode.LeftArrow;
+                transform.position = new Vector3(playerWidth + xOffset, (-camHeight + playerHeight) /2, 0);
+                break;
+            default:
+                inputPlayerL = KeyCode.A;
+                inputPlayerR = KeyCode.D;
+                transform.position = new Vector3(-(playerWidth + xOffset), (-camHeight + playerHeight) / 2, 0);
+                break;
         }
     }
 
@@ -73,7 +78,6 @@ public class PaddleController : MonoBehaviour
         {
             transform.position = new Vector3(theBall.transform.position.x, transform.position.y, transform.position.z);
         }
-            
     }
 
     private void ActivateAutoPlay()

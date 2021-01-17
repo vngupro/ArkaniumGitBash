@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8740499426e3be4ab7f63ed89a9507c, type: 3}
   m_Name: Level_01
   m_EditorClassIdentifier: 
-  numberOfLines: 5
+  numberOfLines: 4
   numberOfBricksPerLines: 17
   brickPrefabsList:
   - {fileID: 5139941995101233969, guid: 7d8da5318e022df49833c4a626c942c5, type: 3}

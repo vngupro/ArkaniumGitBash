@@ -67,11 +67,11 @@ public class PaddleController : MonoBehaviour
 
         if (Input.GetKey(inputPlayerR) && transform.position.x < xMax)
         {
-            transform.position = new Vector2(currentPos.x + 0.1f * speed, currentPos.y);
+            transform.position = new Vector2(currentPos.x + 0.05f * speed, currentPos.y);
         }
         else if (Input.GetKey(inputPlayerL) && transform.position.x > xMin)
         {
-            transform.position = new Vector2(currentPos.x - 0.1f * speed, currentPos.y);
+            transform.position = new Vector2(currentPos.x - 0.05f * speed, currentPos.y);
         }
 
         if (autoPlay)
